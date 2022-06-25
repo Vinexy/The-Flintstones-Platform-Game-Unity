@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using TMPro;
 
 public class Player : MonoBehaviour {
 
@@ -12,6 +13,10 @@ public class Player : MonoBehaviour {
     [SerializeField] Vector2 deathAction = new Vector2(25f, 25f);
     [SerializeField] private AudioSource jumpingSound;
     [SerializeField] private AudioSource dieSound;
+    [SerializeField] private TextMeshProUGUI lives;
+    private static int l=3;
+
+
 
 
     // States
@@ -38,11 +43,13 @@ public class Player : MonoBehaviour {
     {
         if (!isAlive) { return; }
 
+        lives.text = " x " + l.ToString();
         Run();
         ClimbLadder();
         Jump();
         FlipSprite();
         Die();
+        
     }
 
     private void Run()
@@ -80,9 +87,10 @@ public class Player : MonoBehaviour {
 
         if (CrossPlatformInputManager.GetButtonDown("Jump"))
         {
-            jumpingSound.Play();
+            
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigidBody.velocity += jumpVelocityToAdd;
+            jumpingSound.Play();
         }
     }
 
@@ -90,11 +98,18 @@ public class Player : MonoBehaviour {
     {
         if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
         {
-            dieSound.Play();
+            l--;
             isAlive = false;
-            myAnimator.SetTrigger("Dying");
             GetComponent<Rigidbody2D>().velocity = deathAction;
-            FindObjectOfType<GameSession>().ProcessPlayerDeath();
+            myAnimator.SetTrigger("Dying");
+            
+            StartCoroutine(time());
+            if (l == 0)
+            {
+                l = 3;
+            }
+            
+            
         }
     }
 
@@ -105,6 +120,19 @@ public class Player : MonoBehaviour {
         {
             transform.localScale = new Vector2(Mathf.Sign(myRigidBody.velocity.x), 1f);
         }
+    }
+
+    private IEnumerator time()
+    {
+        
+        yield return new WaitForSeconds(0.5f);
+
+        dieSound.Play();
+
+        yield return new WaitForSeconds(0.6f);
+
+        FindObjectOfType<GameSession>().ProcessPlayerDeath();
+
     }
 
 }

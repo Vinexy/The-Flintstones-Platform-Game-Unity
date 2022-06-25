@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameSession : MonoBehaviour {
-
+    
     [SerializeField] int playerLives = 3;
+    
 
     //singleton pattern again
     private void Awake()
@@ -24,13 +26,14 @@ public class GameSession : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+       
+    }
 
     public void ProcessPlayerDeath()
     {
         if (playerLives > 1)
         {
+
             TakeLife();
         }
         else
@@ -42,6 +45,7 @@ public class GameSession : MonoBehaviour {
     private void TakeLife()
     {
         playerLives--;
+        
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
     }
@@ -51,4 +55,6 @@ public class GameSession : MonoBehaviour {
         SceneManager.LoadScene(0);
         Destroy(gameObject);
     }
+   
+    
 }

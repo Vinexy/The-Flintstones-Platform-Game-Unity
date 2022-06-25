@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 61418401689089872}
   - component: {fileID: 114174924143340626}
   - component: {fileID: -585924311055563094}
-  - component: {fileID: -5825000911741349323}
+  - component: {fileID: 612971327424437066}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -191,6 +191,11 @@ MonoBehaviour:
   climbSpeed: 5
   deathAction: {x: 25, y: 25}
   jumpingSound: {fileID: -585924311055563094}
+  dieSound: {fileID: 612971327424437066}
+  lives:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!82 &-585924311055563094
 AudioSource:
   m_ObjectHideFlags: 0
@@ -287,7 +292,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &-5825000911741349323
+--- !u!82 &612971327424437066
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,7 +302,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9ffb7318cd49ec54e8e3e97b0971ce9b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c50e76463ceea0f4eac6b442618fdb63, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

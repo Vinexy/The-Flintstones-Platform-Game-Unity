@@ -12,8 +12,10 @@ public class collect : MonoBehaviour
     private int score;
     
 
+
     void Start()
     {
+
         totalTiles = transform.childCount;
     }
 
@@ -21,6 +23,8 @@ public class collect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
         counter = transform.childCount;
         score = ((totalTiles - counter) * 10);
         scoreText.text = "Score: " + score.ToString();
