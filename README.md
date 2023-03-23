@@ -2,6 +2,9 @@
   
  Resolution: QHD (2560*1440)
 
+![flint](https://user-images.githubusercontent.com/85889196/227111115-cb79bf63-a596-4d45-ac3f-498dfcf5b405.gif)
+
+
 # Start Scene
  ![image](https://user-images.githubusercontent.com/85889196/175544218-8c5d9ffc-05b6-4c00-8f02-9b61ce7e881d.png)
 
